@@ -10,7 +10,7 @@ export default function AuthLayout() {
   useEffect(() => {
     const checkAuth = async () => {
       const jwt = await AsyncStorage.getItem("jwt");
-      setIsAuthenticated(!!jwt); // true if jwt exists, false otherwise
+      setIsAuthenticated(!!jwt); 
     };
 
     checkAuth();
@@ -18,7 +18,7 @@ export default function AuthLayout() {
 
 
   if (isAuthenticated) {
-    return <Redirect href="/tabs/home" />;
+    return <Redirect href="/(tabs)/index" />;
   }
 
   return (

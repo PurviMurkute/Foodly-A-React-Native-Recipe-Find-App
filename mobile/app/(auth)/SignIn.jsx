@@ -6,16 +6,15 @@ import {
   KeyboardAvoidingView,
   ScrollView,
 } from "react-native";
-import { authStyles } from "../../src/styles/auth.styles";
+import { authStyles } from "../../src/styles/authStyles";
 import { Image } from "expo-image";
 import login from "../../assets/images/login.png";
-import purpleTheme from "../../src/styles/colors";
+import Theme from "../../src/styles/colors";
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Toast from "react-native-toast-message";
-import { SERVER_URL } from '@env';
 
 const SignIn = () => {
   const router = useRouter();
@@ -23,13 +22,11 @@ const SignIn = () => {
     email: "",
     password: "",
   });
-
-  console.log("Server URL:", SERVER_URL); // Debugging line
   
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post(`${SERVER_URL}/login`, {
+      const response = await axios.post(`/login`, {
         email: loginUser.email,
         password: loginUser.password,
       });
@@ -42,7 +39,7 @@ const SignIn = () => {
           text1: "Login Successful",
           text2: response.data.message,
         });
-        router.push("/tabs/home");
+        router.push("/(tabs)/index");
       } else {
         console.log(response.data.message);
         Toast.show({
@@ -57,7 +54,7 @@ const SignIn = () => {
   };
 
   return (
-    <View style={authStyles.container}>
+    <View style={{ ...authStyles.container, marginTop: 40 }}>
       <KeyboardAvoidingView style={authStyles.keyboardView} behavior="padding">
         <ScrollView
           contentContainerStyle={authStyles.scrollContent}
@@ -87,7 +84,7 @@ const SignIn = () => {
           <TouchableOpacity style={authStyles.button} onPress={handleLogin}>
             <Text
               style={{
-                color: purpleTheme.textWhite,
+                color: Theme.textWhite,
                 fontWeight: "bold",
                 textAlign: "center",
               }}
@@ -95,6 +92,15 @@ const SignIn = () => {
               SignIn
             </Text>
           </TouchableOpacity>
+          <Text style={{ marginTop: 20 }}>
+            Don't have an account?{" "}
+            <Text
+              style={{ color: Theme.primary }}
+              onPress={() => router.push("/(auth)/SignUp")}
+            >
+              Sign Up
+            </Text>
+          </Text>
         </ScrollView>
       </KeyboardAvoidingView>
     </View>

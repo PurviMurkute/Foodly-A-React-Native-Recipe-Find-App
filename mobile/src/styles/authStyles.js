@@ -15,14 +15,15 @@ const authStyles = StyleSheet.create({
         marginBottom: 20
     },
     text: {
-        color: purpleTheme.textLight,
-        fontSize: 22,
+        color: purpleTheme.text,
+        textAlign: "center",
+        fontSize: 20,
         fontWeight: "bold"
     },
     input: {
     fontSize: 16,
     color: purpleTheme.text,
-    paddingVertical: 12,
+    paddingVertical: 10,
     paddingHorizontal: 20,
     marginTop: 20,
     width: '100%',
@@ -45,8 +46,7 @@ const authStyles = StyleSheet.create({
   },
   scrollContent: {
     flexGrow: 1,
-    paddingHorizontal: 10,
-    paddingTop: 40,
+    paddingHorizontal: 40,
     alignItems: "center"
   },
 })

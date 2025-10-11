@@ -10,14 +10,14 @@ const TabsLayout = () => {
   useEffect(() => {
     const checkAuth = async () => {
       const jwt = await AsyncStorage.getItem("jwt");
-      setIsAuthenticated(!!jwt); // true if jwt exists, false otherwise
+      setIsAuthenticated(!!jwt); 
     };
 
     checkAuth();
   }, []);
 
   if (!isAuthenticated) {
-    return <Redirect href="/auth/sign-in" />;
+    return <Redirect href="/(auth)/SignIn" />;
   }
 
   return (

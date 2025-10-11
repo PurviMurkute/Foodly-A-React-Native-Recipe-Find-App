@@ -1,4 +1,4 @@
-const purpleTheme = {
+const Theme = {
   primary: "#6A1B9A",
   background: "#F3E5F5",
   text: "#4A148C",
@@ -10,4 +10,4 @@ const purpleTheme = {
   textWhite: "#FFFFFF"
 };
 
-export default purpleTheme;
+export default Theme;
